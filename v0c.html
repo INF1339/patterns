@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script>
+            function validate() {
+                var phoneNumber = document.getElementById("phone-number").value
+                var postalCode  = document.getElementById("postal-code").value
+                var phoneREGEX = /^[0-9]{3}[\s][0-9]{3}[\s][0-9]{4}$/;
+                var phoneResult = phoneREGEX.test(phoneNumber);
+                var postalREGEX = /^[A-Z][0-9][A-Z][\s][0-9][A-Z][0-9]$/;
+                var postalResult = postalREGEX.test(postalCode)
+                alert('phone:' + phoneResult+'\n'+'postal code:' + postalResult);
+            }
+        </script>
+    </head>
+    <body>
+        <form action="" onsubmit="validate()">
+        PHONE nnn nnn nnnn <input type="text" id="phone-number" placeholder="phone number"/> <br>
+        POSTAL CODE <input type="text" id="postal-code" placeholder="postal code" /><br>
+        <input type="submit"/>
+</form>
+    </body>
+</html>
+
