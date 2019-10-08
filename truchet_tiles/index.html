@@ -1,1 +1,87 @@
-x
+<html>
+    <head>
+        <style>
+        .r270 { height: 50; width:50;
+                -webkit-transform:rotate(270deg);
+                -moz-transform: rotate(270deg);
+                -ms-transform: rotate(270deg);
+                -o-transform: rotate(270deg);
+                transform: rotate(270deg);
+               }
+        .r180 {  height: 50; width:50;
+                -webkit-transform:rotate(180deg);
+                -moz-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                transform: rotate(180deg);
+               }
+        .r90  {  height: 50; width:50;
+                -webkit-transform:rotate(90deg);
+                -moz-transform: rotate(90deg);
+                -ms-transform: rotate(90deg);
+                -o-transform: rotate(90deg);
+                transform: rotate(90deg);
+               }
+            .r0 {height: 50; width:50;}
+                   </style>
+        <script>
+            'use strict';
+            function draw(dir) {
+                if (dir == null) {
+                    var direction = Math.floor(4*Math.random())}
+                    else {direction = dir}
+                
+                var direction_classes = ['r0', 'r90', 'r180', 'r270']
+                
+                var x = document.getElementById('mydiv')
+                var y = document.createElement('IMG')
+                y.src = 'tile.png'
+                y.setAttribute('class',direction_classes[direction])
+                //y.setAttribute('name','tiles')
+                //x.appendChild(y)
+                x.appendChild(y)
+               
+                
+                //innerHTML = '<image src="tile.png" class="r0"></image><image src="tile.png" class="r90"></image>'
+            }
+            function tile () {
+                var plan = document.getElementById('pattern').value
+                if (plan == null) {plan = '0123000032321320'}
+                for (var i=0; i < plan.length; i++) {
+                    draw(plan[i])
+                }
+                //console.log('Tile All Done')
+            }
+            function clearBody() {
+                //var e = document.querySelector("div");
+                var e = document.getElementById("mydiv");
+                var child = e.lastElementChild;
+                while (child) { 
+                    e.removeChild(child); 
+                    child = e.lastElementChild; 
+                    } 
+            }
+        </script>
+    </head>
+    <body>
+        <h2><a href="https://en.wikipedia.org/wiki/Truchet_tiles">Truchet Tiling</a></h2>
+        Input [0123]+: <input type="text" id="pattern" value="0123" size="80">
+        <button type="button" onclick="tile()">Make Tiles</button>
+        <button type="button" onclick="clearBody()">Clear Tiles</button>
+        <div id='mydiv'></div>
+        <hr>
+        <!--<image src="tile.png" class="r0"></image>
+        <image src="tile.png" class="r90"></image>
+        <image src="tile.png" class="r270"></image>
+        <image src="tile.png" class="r270"></image><br>
+        <image src="tile.png" class="r90"></image>
+        <image src="tile.png" class="r0"></image>
+        
+        <image src="tile.png" class="r180"></image>
+        <image src="tile.png" class="r270"></image><br>
+        <image src="tile.png" class="r90"></image>
+        <image src="tile.png" class="r90"></image>
+        <image src="tile.png" class="r180"></image>
+        <image src="tile.png" class="r270"></image><br>-->
+    </body>
+</html>
